@@ -5,6 +5,7 @@ import {render} from 'react-dom';
 require("!style!css!./styles.css");
 
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+import MyMarker from './MyMarker.js';
 
 const center = [51.505, -0.09];
 
@@ -17,7 +18,14 @@ const marker = (function() {
         </Popup>
     </Marker>
   );
-})()
+})();
+
+const builtMarker = (function() {
+  const position = [51.520, -0.11];
+  return (
+    <MyMarker position={position}/>
+  );
+})();
 
 render(
   <div>
@@ -29,6 +37,7 @@ render(
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
             {marker}
+            {builtMarker}
         </Map>
     </div>
   </div>
